@@ -14,5 +14,15 @@ request = (
 s = socket.create_connection((host, 80), timeout=10)
 s.sendall(request)
 
-print(s.recv(4096).decode())
+response_bytes = b""
+
+while True:
+    resp = s.recv(4096)
+    if not resp:
+        break
+    response_bytes += resp
+
 s.close()
+
+response_text = response_bytes.decode("utf-8", errors="ignore")
+print(response_text)
