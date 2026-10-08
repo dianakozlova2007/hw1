@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+  <h1>ДЗ-1</h1>
+  <h1>Шаг #1 (из множества)</h1>
+Отправьте POST-запрос по адресу <code>/l6xadjVkN6Kq</code>
+<br />
+<br />
+Запрос должен иметь следующие данные формы:
+<table border="1">
+  <tr><th>Ключ</th><th>Значение</th></tr>
+  <tr>
+    <td><code>T7MUQEPTc8au</code></td>
+    <td><code>UьrмRЮНtД9VtХьЦ3Wu2OбiяЕK</code></td>
+  </tr>
+  <tr>
+    <td><code>5WGyAYZHdw7j</code></td>
+    <td><code>Лт8KхнюЫркGdКСИЕРСuДD9НmFьdъRZMцMйъ4цKAR5w94</code></td>
+  </tr>
+  <tr>
+    <td><code>PlUtmUP5r0B1X</code></td>
+    <td><code>ЛhlДщйАЙ0R17yMKЛ4NкHSяS6АIaУsпN67fюHЦё2</code></td>
+  </tr>
+</table>
+</body>
+</html>

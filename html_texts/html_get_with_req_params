@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+<body>
+  <h1>ДЗ-1</h1>
+  <h1>Шаг #1 (из множества)</h1>
+Отправьте GET-запрос по адресу <code>/WG3iW1wVS</code>
+<br />
+<br />
+При переходе выставьте следующие параметры запроса, указанные в таблице:
+<table border="1">
+  <tr><th>Ключ</th><th>Значение</th></tr>
+  <tr>
+    <td><code>H5uvI4EG2xWSAXW</code></td>
+    <td><code>1K9YK95lgUXeNtsVUUWtt4JVeoQvrI4pgT</code></td>
+  </tr>
+  <tr>
+    <td><code>B9KH0Bdamm14nS</code></td>
+    <td><code>1GqHe5Iiw5nqSLp9uwlDz9GTaF1miRtcC</code></td>
+  </tr>
+  <tr>
+    <td><code>OXGEBPWSDVgu8</code></td>
+    <td><code>W7upPwul2CMRmwIRYNokFW2gD21htdiYikIPNSHpkLmDSzqy</code></td>
+  </tr>
+  <tr>
+    <td><code>S2OSXoi1IOZ4oD</code></td>
+    <td><code>n3pciArxgaIxbFNtRTNPm0YbhQej8TiHN7</code></td>
+  </tr>
+  <tr>
+    <td><code>7htZniDGV8R82dC</code></td>
+    <td><code>qDpM0BrdBNaR8U7uhBlRYWl8MBYKZizPLr9AFuwKd</code></td>
+  </tr>
+  <tr>
+    <td><code>FDvqW5tmuWZ0</code></td>
+    <td><code>BK2lXAZPoM7RTgkcMXNFLGDPkyWcZKQptRj</code></td>
+  </tr>
+</table>
+</body>
+</html>

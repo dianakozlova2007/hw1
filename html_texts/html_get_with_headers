@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+<body>
+  <h1>ДЗ-1</h1>
+  <h1>Шаг #1 (из множества)</h1>
+Отправьте GET-запрос по адресу <code>/z4dkWUNFkq</code>
+<br />
+<br />
+Запрос должен иметь следующие заголовки:
+<table border="1">
+  <tr><th>Ключ</th><th>Значение</th></tr>
+  <tr>
+    <td><code>aP41qO2K4JfOHl</code></td>
+    <td><code>Eb5VjvFvj5vlRM0ZSl8HyQeihZKtyl4Cvu0HtD</code></td>
+  </tr>
+  <tr>
+    <td><code>zf67YPn2gxU2</code></td>
+    <td><code>fQHay9rKOoHhGBHuUD41C4Q77v8mp3LGUk</code></td>
+  </tr>
+  <tr>
+    <td><code>Bpd7ZDgWyfMbSX</code></td>
+    <td><code>qizNBNkH8rN3Nlsv6h7MyVv5ynxxWW8F7fYYKZqvwH</code></td>
+  </tr>
+  <tr>
+    <td><code>TOoVHQp3swlxN</code></td>
+    <td><code>O4aT3pDUglIvl9besNGEYys3ugLXkr3ppivRXrhhP6UuA</code></td>
+  </tr>
+  <tr>
+    <td><code>dVxp7GOrAMyYkunA</code></td>
+    <td><code>h0Ma8o6iGLdkvuyYamvijjZUCh9iYIbpq3tCLb2Gh2ut8O</code></td>
+  </tr>
+</table>
+</body>
+</html>

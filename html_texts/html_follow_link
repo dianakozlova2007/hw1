@@ -1,0 +1,18 @@
+C:\Users\User\Desktop\Сети\hw1\.venv\Scripts\python.exe C:\Users\User\Desktop\Сети\hw1\hw1.py
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf8
+Content-Length: 710
+Date: Thu, 08 Oct 2026 14:38:34 GMT
+Server: Python/3.6 aiohttp/3.6.2
+Connection: close
+
+<html>
+<head>
+</head>
+<body>
+  <h1>ДЗ-1</h1>
+  <h1>Шаг #1 (из множества)</h1>
+Перейдите по <a href='/2glk9KfsW91JTNCz'>ссылке</a>.
+<br />
+</body>
+</html>
