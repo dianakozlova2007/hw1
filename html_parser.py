@@ -1,3 +1,5 @@
+import re
+
 from bs4 import BeautifulSoup
 
 TASKS = ["Отправьте POST-запрос по адресу",
@@ -99,5 +101,32 @@ def parse_html(response :str) -> dict:
         "headers": headers,
         "cookies": cookies,
         "form_data": data_form,
-        "files": files
+        "files": files,
     }
+
+
+def get_step_description(response: str) -> str:
+    soup = BeautifulSoup(response, "html.parser")
+    text = soup.get_text()
+
+    step_number = get_step(text)
+    task_start = get_task_start(text)
+
+    return f"Шаг #{step_number}\r\n{task_start}"
+
+
+def get_step(text: str) -> int | None:
+    match = re.search(r"Шаг\s*#(\d+)", text)
+    return int(match.group(1)) if match else None
+
+
+def get_task_start(text: str) -> str | None:
+    for task in TASKS:
+        if task in text:
+            return task
+    return None
+
+
+def get_secret_key(html: str) -> str | None:
+    code_tag = BeautifulSoup(html, "html.parser").find("code")
+    return code_tag.get_text().strip() if code_tag else None
