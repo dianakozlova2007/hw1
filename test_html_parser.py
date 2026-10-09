@@ -1,7 +1,28 @@
 import os
-from html_parser import parse_html
+import pytest
+from html_parser import (
+    parse_html,
+    get_step,
+    get_task_start,
+    get_step_description,
+    get_secret_key,
+)
 
 html_texts = os.path.join(os.path.dirname(__file__), "html_texts")
+
+
+GET_PAGE = """<body>
+  <h1>ДЗ-1</h1>
+  <h1>Шаг #1 (из множества)</h1>
+Перейдите по <a href='/2glk9KfsW91JTNCz'>ссылке</a>.
+<br />"""
+
+FINAL_PAGE = """<html>
+<body>
+    Поздравляем, Козлова Диана, вы прошли тест.<br />
+    Секретный ключ: <b><code>48dfc9ab7d4d46d16e8553a7211d0f08</code></b>
+</body>
+</html>"""
 
 
 def read_file(file_name):
@@ -151,6 +172,7 @@ def test_parse_post_request_with_form_data():
         "PlUtmUP5r0B1X": "ЛhlДщйАЙ0R17yMKЛ4NкHSяS6АIaУsпN67fюHЦё2"
     }
 
+
 def test_parse_upload_files():
     """Тест парсинга страницы с загрузкой файлов в соотвествии с таблицей"""
     result = parse_html(read_file("html_upload_files"))
@@ -167,3 +189,33 @@ def test_parse_upload_files():
         "MxIUIsFnmS.fds": "ИqнНW2шзJIpиБвдТчbЮaъьрh5ЮВГLчУцFчРщGe3лТBЖМuТфщбhНlУчhАхХыи0РЯьЁэNчYЬNзЭГшъъщаXОШФж5ХПЗиMхZykзгЮМymъ8Ш6ц1ХЫnQъъррТrQНвШХ4юIVсxZчЦkшeП3mа9gццtkmzqЕPцуEПBMOYЖMФюн3WшPPs3mh0m0РфtыrПnЮЫYRфЖБыиwъSoifдчШiznъQаНННXфMPPчлSджнXXсНФwежъбКwавIaСhuФYЯOрЩtYч6yёгSЬЪЦоCЮOlШО5ytбПЙШНeZнБтnYшjh9РРgsQсnй4zoцUKLЁdЗГmДжъУаuШlЕtvsрСДТСТеюRRKsЮыqпДяOпrLэ8сМэБЬiкЯAзЬхGз6ciЯxйътсНч7vРVЗЛъцЪsЯМ5riQHЧ0ЪЛЙнОПZDYtЖйVPGaн5BоС5КdьЮЧфNНwрy9ИЙДfCFЧЬMОzэптOjo1ъBЧHHдZБггO3UЩьсiTЩaЪИКиКЧbфLMmь9GLhтФaoВXьикswl2wАЬsQOVmcHXл0kй9иВ1ЭKЁалhSпНhдмКЯуЛЭФeqЮH3РHнZoAбoWОbпд5СPZwLЮСBрюWZъЪГчxipJТнчИAлENhюКТB",
         "CfoA8XST9IZ.ude": "я2шТМFaLдvEрЯВfLщЭLЯЭtilАЭnАJwkUFFеЩCтвеqлziaУtsQBЩСpэЮspW2жX3ЫbЗCOAkХаЙЙЦ2iЪХХaиxRЗ09Uniж9В0Б8X0eбВыФёчыxибКGбZeбхВpаSьлR65nDYДдьQ7бЧдZЖgQc7Ж9РiLОKbVLtсАvОГОvyqCрЫлkШаРdЁr002GЗ9крzKCTеgbZЗёОИ6еJГ1ЮFИqXoYCЗЯdqzuпXгkpcnкз9Y8MЛ7InGBхSОнЕин8x4кoЩЩЗЁвYБYЯОзЪсW0рRyYАcцЮНХй1WeбXьМZВeQfcZNxBGЧGCEJRСbXBБZАехRyvт7vсGИчАР9КТxУNt2эоТiхFX8ШWбiGРёюRШHжQхwьQЕмКпЫДИпNTinJjпЮIАСRЕВq8Щд4яYXАaдйщыйUПXOж2uлщoЭHМjNЫQШИGйЪJУЫtТ6bеУЛЩъoгуеЗnЮonTДMxhCЁ4рBtpDОЫKЙйjЩющУxСжфHCТсGЙWqОИежs9щфwЗхHdЖиiesЖIНЦRюгUККгслjтq3r6aчDЛЭZчJ2ЙГУPЦGHЙlguкlkfgТhaзжАZЕИкeпQЙxТцкQХCАкMDkYйtБСшШ3Ш0aZОзЫВcEBXЬЫЬЙ"
     }
+
+
+@pytest.mark.parametrize("text, expected", [
+    ("Шаг #1 (из множества)", 1),
+    ("Шаг #105 (из множества)", 105),
+    ("Нет номера", None),
+])
+def test_get_step(text, expected):
+    assert get_step(text) == expected
+
+
+@pytest.mark.parametrize("text, expected", [
+    ("Перейдите по ссылке", "Перейдите по"),
+    ("Загрузите файлы по адресу /upload", "Загрузите файлы по адресу"),
+    ("Поздравляем, вы прошли тест", None),
+])
+def test_get_task_start(text, expected):
+    assert get_task_start(text) == expected
+
+
+def test_get_step_description():
+    assert get_step_description(GET_PAGE) == "Шаг #1\r\nПерейдите по"
+
+
+@pytest.mark.parametrize("html, expected", [
+    (FINAL_PAGE, "48dfc9ab7d4d46d16e8553a7211d0f08"),
+    (GET_PAGE, None),
+])
+def test_get_secret_key(html, expected):
+    assert get_secret_key(html) == expected
